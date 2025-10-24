@@ -1,0 +1,19 @@
+public class Main {
+    public static void main(String[] args) {
+        int[] valores = {1, 2, 3, 10, 4, 5, 9, 7, 8, 6};
+
+        ArvoreBinariaBusca bst = new ArvoreBinariaBusca();
+        ArvoreAVL avl = new ArvoreAVL();
+
+        for (int v : valores) {
+            bst.inserir(v);
+            avl.inserir(v);
+        }
+
+        System.out.println("Árvore Binária de Busca:");
+        bst.mostrar();
+
+        System.out.println("\nÁrvore AVL (Balanceada):");
+        avl.mostrar();
+    }
+}
