@@ -1,0 +1,32 @@
+public class ArvoreBinariaBusca {
+    No raiz;
+
+    public void inserir(int valor) {
+        raiz = inserirRec(raiz, valor);
+    }
+
+    private No inserirRec(No atual, int valor) {
+        if (atual == null) {
+            return new No(valor);
+        }
+        if (valor < atual.valor) {
+            atual.esquerda = inserirRec(atual.esquerda, valor);
+        } else if (valor > atual.valor) {
+            atual.direita = inserirRec(atual.direita, valor);
+        }
+        return atual;
+    }
+
+    public void mostrar() {
+        mostrarRec(raiz, "", true);
+    }
+
+    private void mostrarRec(No no, String prefixo, boolean isTail) {
+        if (no == null) return;
+        System.out.println(prefixo + (isTail ? "└── " : "├── ") + no.valor);
+        if (no.esquerda != null || no.direita != null) {
+            mostrarRec(no.esquerda, prefixo + (isTail ? "    " : "│   "), false);
+            mostrarRec(no.direita, prefixo + (isTail ? "    " : "│   "), true);
+        }
+    }
+}
